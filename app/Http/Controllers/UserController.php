@@ -18,15 +18,15 @@ class UserController extends Controller
     public function get($id_user)
     {
         $user = DB::select("select * from users where id = ?",[$id_user]);
-        $result = json_encode($user[0]);
         if ($user)
         {
+            $result = json_encode($user[0]);
             return response($result, 200)
             ->header('Content-Type', 'application/json');
         }
         else
         {
-            return response($result, 404)
+            return response('', 404)
             ->header('Content-Type', 'application/json');
         }
     }
